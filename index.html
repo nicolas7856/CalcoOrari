@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>WorkTime Tracker</title>
+    
+    <meta name="theme-color" content="#2563eb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="WorkTime">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-192.png">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <header>
+            <h1>WorkTime Tracker</h1>
+        </header>
+
+        <div class="mode-switch">
+            <button id="btnModeA" class="mode-btn active" onclick="switchMode('A')">Dettagliata</button>
+            <button id="btnModeB" class="mode-btn" onclick="switchMode('B')">Semplificata</button>
+        </div>
+
+        <div class="card">
+            <label class="input-label">Inizio Turno</label>
+            <div class="quick-select-grid" id="quickSelectContainer">
+                </div>
+            <input type="time" id="startTime" class="time-input main-input">
+        </div>
+
+        <div id="modeA-inputs" class="mode-section">
+            <div class="row">
+                <div class="col">
+                    <label class="input-label">Inizio Pausa</label>
+                    <input type="time" id="pauseStart" class="time-input">
+                </div>
+                <div class="col">
+                    <label class="input-label">Fine Pausa</label>
+                    <input type="time" id="pauseEnd" class="time-input">
+                </div>
+            </div>
+        </div>
+
+        <div id="modeB-inputs" class="mode-section hidden">
+            <div class="card">
+                <label class="input-label">Durata Pausa (minuti)</label>
+                <div class="pause-controls">
+                    <button class="adjust-btn" onclick="adjustPause(-5)">-5</button>
+                    <input type="number" id="pauseDuration" class="time-input" value="0" placeholder="Min">
+                    <button class="adjust-btn" onclick="adjustPause(+5)">+5</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <label class="input-label">Fine Turno</label>
+            <input type="time" id="endTime" class="time-input main-input">
+        </div>
+
+        <div class="results-area">
+            <div class="result-row">
+                <span class="label">Totale Ore:</span>
+                <span class="value" id="resHMM">--:--</span>
+            </div>
+            <div class="result-row sm">
+                <span class="label">Decimale:</span>
+                <span class="value" id="resDec">--</span>
+            </div>
+        </div>
+        
+        <button id="resetBtn" class="reset-btn">Reset Giornata</button>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Registration Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js')
+                .then(() => console.log('Service Worker Registered'))
+                .catch(err => console.error('SW Error:', err));
+        }
+    </script>
+</body>
+</html>

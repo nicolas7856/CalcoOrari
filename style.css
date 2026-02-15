@@ -1,0 +1,179 @@
+:root {
+    --primary: #2563eb;
+    --bg-app: #f3f4f6;
+    --bg-card: #ffffff;
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+* { box-sizing: border-box; touch-action: manipulation; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-app);
+    color: var(--text-main);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 480px;
+    background: var(--bg-app);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+header h1 {
+    font-size: 1.25rem;
+    text-align: center;
+    margin: 0 0 10px 0;
+    color: var(--primary);
+}
+
+/* Mode Switcher */
+.mode-switch {
+    display: flex;
+    background: #e0e7ff;
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 10px;
+}
+
+.mode-btn {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 8px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.mode-btn.active {
+    background: var(--bg-card);
+    color: var(--primary);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Cards & Inputs */
+.card {
+    background: var(--bg-card);
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+}
+
+.input-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.time-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.5rem;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    text-align: center;
+    background: #fff;
+    font-family: inherit;
+}
+
+.time-input:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+/* Quick Select Grid */
+.quick-select-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.qs-btn {
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    color: var(--primary);
+    padding: 8px 4px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.qs-btn:active {
+    background: var(--primary);
+    color: white;
+}
+
+/* Layout Utils */
+.row { display: flex; gap: 12px; }
+.col { flex: 1; }
+.hidden { display: none; }
+
+/* Pause Adjuster */
+.pause-controls {
+    display: flex;
+    gap: 10px;
+}
+.adjust-btn {
+    width: 50px;
+    font-size: 1.2rem;
+    background: #e0e7ff;
+    border: none;
+    border-radius: 8px;
+    color: var(--primary);
+}
+
+/* Results */
+.results-area {
+    background: var(--primary);
+    color: white;
+    padding: 20px;
+    border-radius: 16px;
+    margin-top: 10px;
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+}
+
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.result-row .value {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.result-row.sm {
+    margin-top: 8px;
+    opacity: 0.9;
+}
+.result-row.sm .value { font-size: 1.2rem; }
+
+.reset-btn {
+    background: transparent;
+    border: 1px solid #fee2e2;
+    color: #ef4444;
+    padding: 12px;
+    border-radius: 12px;
+    width: 100%;
+    margin-top: 20px;
+    font-weight: 600;
+}
